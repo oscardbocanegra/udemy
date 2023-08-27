@@ -6,6 +6,7 @@ public class SentenciaForEach {
             System.out.println("num = " + num);
 
             int numero = 0;
+
         }
 
     }
