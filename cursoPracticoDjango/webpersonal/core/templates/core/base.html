@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Mi web personal</title> 
+        <title>{% block title %} {% endblock %} | Mi web personal</title> 
     </head>
     <body>
         <h1>Mi web personal</h1>
@@ -17,7 +17,7 @@
         </ul>
 
         {% block content %}
-        
+
         {% endblock  %}
     </body>
 </html>
