@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/../.." vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ClaseWrapper" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/FlujosDeControl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/HolaMundo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Operadores" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/TiposDeStrings" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/learning" vcs="Git" />
+  </component>
+</project>
