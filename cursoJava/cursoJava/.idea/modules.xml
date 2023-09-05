@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ClaseWrapper/ClaseWrapper.iml" filepath="$PROJECT_DIR$/ClaseWrapper/ClaseWrapper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FlujosDeControl/FlujosDeControl.iml" filepath="$PROJECT_DIR$/FlujosDeControl/FlujosDeControl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HolaMundo/HolaMundo.iml" filepath="$PROJECT_DIR$/HolaMundo/HolaMundo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Operadores/Operadores.iml" filepath="$PROJECT_DIR$/Operadores/Operadores.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TiposDeStrings/TiposDeStrings.iml" filepath="$PROJECT_DIR$/TiposDeStrings/TiposDeStrings.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/cursoJava.iml" filepath="$PROJECT_DIR$/.idea/cursoJava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/learning/learning.iml" filepath="$PROJECT_DIR$/learning/learning.iml" />
+    </modules>
+  </component>
+</project>
