@@ -8,9 +8,12 @@ def index(request):
     item_list = Item.objects.all()
     template = loader.get_template('food/index.html')
     contex = {
-        
+        'item_list':item_list,
     }
-    return HttpResponse(template.render(contex,request))
+    return render(request, 'food/index.html', contex)
 
 def item(request):
     return HttpResponse('<h1>This is an item view</h1>')
+
+def detail(request, item_id):
+    return HttpResponse("This is item no/id: %s" % item_id)
