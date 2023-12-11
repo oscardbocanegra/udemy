@@ -23,3 +23,16 @@ def usd_a_eur(num):
     
 conversion = usd_a_eur(dolares)
 print(conversion)
+
+#Práctica Return 3:Crea una función llamada invertir_palabra que tome los 
+#caracteres de una palabra dada como argumento, invierta el orden de sus caracteres
+#y los devuelva de ese modo y en mayúsculas. También, deberás crear una variable 
+#llamada palabra, que contenga el string que tú prefieras, para sumisitrarle como 
+#argumento a la función creada.
+
+palabra = "Python"
+
+def invertir_palabra(palabra):
+    palabra = palabra[::-1]
+    palabra = palabra.upper()
+    return palabra
