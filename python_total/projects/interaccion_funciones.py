@@ -32,3 +32,5 @@ palitos_mezclados= mezclar(palitos)
 seleccion = probar_suerte()
 
 chequear_intento(palitos_mezclados, seleccion)
+
+
