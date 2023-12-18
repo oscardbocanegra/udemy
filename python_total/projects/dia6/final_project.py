@@ -35,24 +35,70 @@ def inicio():
     
 inicio()
 
+def mostrar_categoria(ruta):
+    print("Categorias:")
+    ruta_categorias = Path(ruta)
+    lista_categorias = []
+    contador = 1
+    
+    for carpeta in ruta_categorias.iterdir():
+        carpeta_str = str(carpeta.name)
+        print(f'[{contador}] - {carpeta_str}')
+        lista_categorias.append(carpeta)
+        contador += 1
+    
+    return lista_categorias
 
+def elgir_categoria(lista):
+    eleccion_correcta = 'x'
+    
+    while not eleccion_correcta.isnumeric() or int(eleccion_correcta) not in range(1, len(lista) + 1):
+        eleccion_correcta = input("\nElige una categoria: ")
+        
+    return lista[int(eleccion_correcta) - 1]
+
+def mostrar_recetas(ruta):
+    print("recetas: ")
+    ruta_recetas = Path(ruta)
+    lista_recetas = []
+    contador = 1
+    
+    for receta in ruta_recetas.glob('*.txt'):
+        receta_str = str(receta.name)
+        print(f"[{contador}] - {receta_str}")
+        lista_recetas.append(receta)
+        contador += 1
+    return lista_recetas
+
+def elegir_recetas(lista):
+    eleccion_receta = 'x'
+    while not eleccion_receta.isnumeric() or int(eleccion_receta) not in range(1, len(lista)+1):
+        eleccion_receta = input("\nElige una receta: ")
+        
+    return lista[int(eleccion_receta) -1]
 
 menu = 0
 
 if menu == 1:
-    pass
+    mis_categorias = mostrar_categoria(mi_ruta)
+    mi_categoria = elgir_categoria(mis_categorias)
+    mis_recetas = mostrar_recetas(mi_categoria)
 
 elif menu == 2:
-    pass
+    mis_categorias = mostrar_categoria(mi_ruta)
+    mi_categoria = elgir_categoria(mis_categorias)
 
 elif menu == 3:
     pass
 
 elif menu == 4:
-    pass
+    mis_categorias = mostrar_categoria(mi_ruta)
+    mi_categoria = elgir_categoria(mis_categorias)
+    mis_recetas = mostrar_recetas(mi_categoria)
 
 elif menu == 5:
-    pass
+    mis_categorias = mostrar_categoria(mi_ruta)
+    mi_categoria = elgir_categoria(mis_categorias)
 
 elif menu == 6:
     pass
