@@ -23,22 +23,30 @@ class Cliente(Persona):
         else:
             print("Saldo insuficiente.")
 
-cliente1 = Cliente(nombre="Oscar", apellido="Bocanegra", numero_cuenta="123456", balance=1000.0)
+def crear_cliente():
+    nombre_cl = input("Ingrese su nombre: ")
+    apellido_cl = input("Ingresa tu apellido: ")
+    numero_cuenta = input("Ingrese su numero de cuenta: ")
+    cliente = Cliente(nombre_cl, apellido_cl, numero_cuenta)
+    return cliente
 
-while True:
-    print("\n1. Imprimir Cliente\n2. Depositar\n3. Retirar\n4. Salir")
-    opcion = input("Elija una opción (1-4): ")
-
-    if opcion == "1":
-        cliente1.imprimir_cliente()
-    elif opcion == "2":
-        monto_deposito = float(input("Ingrese el monto a depositar: "))
-        cliente1.depositar(monto_deposito)
-    elif opcion == "3":
-        monto_retiro = float(input("Ingrese el monto a retirar: "))
-        cliente1.retirar(monto_retiro)
-    elif opcion == "4":
-        print("¡Hasta luego!")
-        break
-    else:
-        print("Opción inválida. Por favor, elija una opción válida.")
+def inicio():
+    mi_cliente = crear_cliente()
+    print(mi_cliente)
+    opcion = 0
+    
+    while opcion != 'S':
+        print("Elije: Depositar (D), retirar(R), o Salir (S)")
+        opcion = input()
+        
+        if opcion == 'D':
+            monto_dep = int(input("Monto a depositar: "))
+            mi_cliente.depositar(monto_dep)
+            
+        elif opcion == 'R':
+            monto_ret = int(input("Monto a retirar: "))
+            mi_cliente.retirar(monto_ret)
+            
+        print(mi_cliente)
+        
+inicio()
