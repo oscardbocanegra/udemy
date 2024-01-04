@@ -15,9 +15,10 @@ pygame.display.set_icon(icono)
 img_jugador = pygame.image.load("nave-espacial.png")
 jugador_x = 368
 jugador_y = 536
+jugador_x_cambio = 0
 
-def jugador():
-    pantalla.blit(img_jugador, (jugador_x, jugador_y))
+def jugador(x, y):
+    pantalla.blit(img_jugador, (x, y))
 
 
 #Loop del juego
@@ -30,8 +31,19 @@ while se_ejecuta:
     for evento in pygame.event.get():
         if evento.type == pygame.QUIT:
             se_ejecuta = False
-    
-    jugador()
+            
+        if evento.type == pygame.KEYDOWN:
+            if evento.key == pygame.K_LEFT:
+                jugador_x_cambio = -0.2
+            elif evento.key == pygame.K_RIGHT:
+                jugador_x_cambio = 0.2
+                
+        if evento.type == pygame.KEYUP:
+            if evento.key == pygame.K_LEFT or evento.key == pygame.K_RIGHT:
+                jugador_x_cambio = 0
+                
+    jugador_x += jugador_x_cambio
+    jugador(jugador_x, jugador_y)
     
     pygame.display.update()
             
