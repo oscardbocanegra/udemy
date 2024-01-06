@@ -1,4 +1,5 @@
 import pygame
+import random
 
 #Inicilizar pygame
 pygame.init()
@@ -17,8 +18,19 @@ jugador_x = 368
 jugador_y = 536
 jugador_x_cambio = 0
 
+#variables del enemigo
+img_enemigo = pygame.image.load("astronave.png")
+enemigo_x = random.randint(0, 736)
+enemigo_y = random.randint(50, 200)
+enemigo_x_cambio = 0
+
+#funcion jugador
 def jugador(x, y):
     pantalla.blit(img_jugador, (x, y))
+    
+#funcion enemigo
+def enemigo(x, y):
+    pantalla.blit(img_enemigo, (x, y))
 
 
 #Loop del juego
@@ -50,13 +62,16 @@ while se_ejecuta:
                 
     # Modificar ubicacion
     jugador_x += jugador_x_cambio
-    jugador(jugador_x, jugador_y)
     
     #Mantener dentro de bordes
     if jugador_x <= 0:
         jugador_x = 0
     elif jugador_x >= 736:
         jugador_x = 736
+        
+    jugador(jugador_x, jugador_y)
+    enemigo(enemigo_x, enemigo_y)
+    
     
     #Actualizar
     pygame.display.update()
