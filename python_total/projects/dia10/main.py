@@ -21,11 +21,19 @@ jugador_y = 500
 jugador_x_cambio = 0
 
 #variables del enemigo
-img_enemigo = pygame.image.load("astronave.png")
-enemigo_x = random.randint(0, 736)
-enemigo_y = random.randint(50, 200)
-enemigo_x_cambio = 0.2
-enemigo_y_cambio = 50
+img_enemigo = []
+enemigo_x = []
+enemigo_y = []
+enemigo_x_cambio = []
+enemigo_y_cambio = []
+cantidad_enemigos = 8
+
+for e in range(cantidad_enemigos):
+    img_enemigo.append(pygame.image.load("astronave.png"))
+    enemigo_x.append(random.randint(0, 736))
+    enemigo_y.append(random.randint(50, 200))
+    enemigo_x_cambio.append(0.2)
+    enemigo_y_cambio.append(50)
 
 #variables de la bala
 img_bala = pygame.image.load("bala.png")
@@ -43,8 +51,8 @@ def jugador(x, y):
     pantalla.blit(img_jugador, (x, y))
     
 #funcion enemigo
-def enemigo(x, y):
-    pantalla.blit(img_enemigo, (x, y))
+def enemigo(x, y, ene):
+    pantalla.blit(img_enemigo[ene], (x, y))
     
 #funcion bala 
 def disparar_bala(x, y):
@@ -101,16 +109,29 @@ while se_ejecuta:
         jugador_x = 736
         
     # Modificar ubicacion del enemigo
-    enemigo_x += enemigo_x_cambio
+    for e in range(cantidad_enemigos):
+        enemigo_x[e] += enemigo_x_cambio[e]
     
-    #Mantener dentro de bordes del enemigo
-    if enemigo_x <= 0:
-        enemigo_x_cambio = 0.3
-        enemigo_y += enemigo_y_cambio
+        #Mantener dentro de bordes del enemigo
+        if enemigo_x[e] <= 0:
+            enemigo_x_cambio[e] = 0.3
+            enemigo_y[e] += enemigo_y_cambio[e]
+            
+        elif enemigo_x[e] >= 736:
+            enemigo_x_cambio[e] = -0.3
+            enemigo_y[e] += enemigo_y_cambio[e]
+            
+        #colision
+        colision = hay_colision(enemigo_x[e], enemigo_y[e], bala_x, bala_y)
+        if colision:
+            bala_y = 500
+            bala_visible = False 
+            puntaje += 1
+            print(puntaje)
+            enemigo_x[e] = random.randint(0, 736)
+            enemigo_y[e] = random.randint(50, 200)
         
-    elif enemigo_x >= 736:
-        enemigo_x_cambio = -0.3
-        enemigo_y += enemigo_y_cambio
+        enemigo(enemigo_x[e], enemigo_y[e], e)
         
     #movimiento bala
     if bala_y <= -64:
@@ -121,18 +142,9 @@ while se_ejecuta:
         disparar_bala(bala_x, bala_y)
         bala_y -= bala_y_cambio   
         
-    #colision
-    colision = hay_colision(enemigo_x, enemigo_y, bala_x, bala_y)
-    if colision:
-        bala_y = 500
-        bala_visible = False 
-        puntaje += 1
-        print(puntaje)
-        enemigo_x = random.randint(0, 736)
-        enemigo_y = random.randint(50, 200)
     
     jugador(jugador_x, jugador_y)
-    enemigo(enemigo_x, enemigo_y)
+    
     
     
     #Actualizar
