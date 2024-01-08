@@ -46,7 +46,7 @@ img_bala = pygame.image.load("bala.png")
 bala_x = 0
 bala_y = 500
 bala_x_cambio = 0
-bala_y_cambio = 0.5
+bala_y_cambio = 1
 bala_visible = False
 
 #puntaje
@@ -54,6 +54,15 @@ puntaje = 0
 fuente = pygame.font.Font('freesansbold.ttf', 32)
 texto_x = 10
 texto_y = 10
+
+
+#texto final de juego
+fuente_final = pygame.font.Font('freesansbold.ttf', 40)
+
+def texto_final():
+    mi_fuente_final = fuente_final.render("JUEGO TERMINADO", True, (255, 255, 255))
+    pantalla.blit(mi_fuente_final, (60, 200))
+
 
 # funcion mostrar puntaje 
 def mostrar_puntaje(x, y):
@@ -126,6 +135,14 @@ while se_ejecuta:
         
     # Modificar ubicacion del enemigo
     for e in range(cantidad_enemigos):
+        
+        # fin del juego 
+        if enemigo_y[e] > 500:
+            for k in range(cantidad_enemigos):
+                enemigo_y[k] = 1000
+            texto_final()
+            break
+        
         enemigo_x[e] += enemigo_x_cambio[e]
     
         #Mantener dentro de bordes del enemigo
