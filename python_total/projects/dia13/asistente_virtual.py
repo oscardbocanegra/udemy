@@ -76,7 +76,7 @@ def hablar(mensaje):
     
     # encender el motor de pytts3
     engine = pyttsx3.init()
-    engine.setProperty('voice', id3)
+    engine.setProperty('voice', id1)
     
     # pronunciar mensaje
     engine.say(mensaje)
@@ -110,7 +110,7 @@ def pedir_hora():
     #pedir una variable con datos de la hora
     hora = datetime.datetime.now()
     print(hora)
-    hora = f"On this moment it's {hora.hour} hours with {hora.minute} and {hora.second} seconds"
+    hora = f"En este momento son las {hora.hour} horas con {hora.minute} y {hora.second} segundos"
     
     hablar(hora)
     
