@@ -17,7 +17,7 @@ id2 = 'spanish'
 id3 = "en-uk-north"
 
 # escuchar nuestro microfono y devolver el audio como texto
-def transformar_audio_en_texto():
+def trasformar_audio_en_texto():
     
     #almacenar recognizer en variable
     r = sr.Recognizer()
@@ -103,7 +103,7 @@ def pedir_dia():
                   6: 'Domingo'}
     
     # decir dia de la semana
-    hablar(f"Today's {calendario[dia_semana]}")
+    hablar(f"hoy es {calendario[dia_semana]}")
 
 def pedir_hora():
     
@@ -129,4 +129,33 @@ def saludo_inicial():
     #decir salido
     hablar(f'Hola, {momento}. Dime en que te puedo colaborar')
     
-saludo_inicial()
+# funcion central del asistente
+def pedir_cosas():
+
+    # activar saludo inicial
+    saludo_inicial()
+
+    # variable de corte
+    comenzar = True
+
+    # loop central
+    while comenzar:
+
+        # activar el micro y guardar el pedido en un string
+        pedido = trasformar_audio_en_texto().lower()
+
+        if 'abrir youtube' in pedido:
+            hablar('Con gusto, estoy abriendo youTube')
+            webbrowser.open('https://www.youtube.com')
+            continue
+        elif 'abrir el navegador' in pedido:
+            hablar('Claro, estoy en eso')
+            webbrowser.open('https://www.google.com')
+            continue
+        elif 'qué día es hoy' in pedido:
+            pedir_dia()
+            continue
+        elif 'qué hora es' in pedido:
+            pedir_hora()
+            continue
+pedir_cosas()
