@@ -181,16 +181,19 @@ def pedir_cosas():
             continue
         elif 'precio de las acciones' in pedido:
             accion = pedido.split('de')[-1].strip()
-            cartera = {'apple': 'APPL',
-                       'amazon': 'AMZN',
-                       'google': 'GOOGL'}
+            cartera = {'apple':'APPL',
+                       'amazon':'AMZN',
+                       'google':'GOOGL'}
             try:
                 accion_buscada = cartera[accion]
                 accion_buscada = yf.Ticker(accion_buscada)
                 precio_actual = accion_buscada.info['regularMarketPrice']
-                hablar(f'La encontre, el precio de {accion} es {precio_actual}')
+                hablar(f'La encontré, el precio de {accion} es {precio_actual}')
                 continue
             except:
-                hablar('Perdon pero no la he encontrado')
+                hablar("Perdón pero no la he encontrado")
                 continue
+        elif 'adiós' in pedido:
+            hablar('Adios, que tengas un gran día')
+            break
 pedir_cosas()
