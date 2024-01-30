@@ -1,3 +1,7 @@
+{% extends "base/principal.html" %}
+
+{% block content %}
+
 <a href = "{% url 'tareas' %}">Volver</a>
 
 <form method = "POST">
@@ -7,3 +11,5 @@
     <input type="submit" value= "Eliminar">
 
 </form>
+
+{% endblock content %}
